@@ -40,6 +40,6 @@ node server.js
 ## DEVELOPMENT
 
 ```sh
-nodemon server.js
+node_modules/nodemon/bin/nodemon.js server.js
 ```
 
