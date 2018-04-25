@@ -6,13 +6,15 @@ module.exports = {
   play: (filename) => {
     return new Promise((resolve, reject) => {
       if (fs.existsSync(filename)) {
-        // Do something
         fs
           .createReadStream(filename)
           .pipe(new lame.Decoder())
-          .on("format", function(format){
+          .on("format", function(format) {
             this.pipe(new Speaker(format));
             resolve("playing " + filename);
+          })
+          .on("error", function(error) {
+            reject(error.toString());
           });
           
       } else {

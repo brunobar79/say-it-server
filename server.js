@@ -5,18 +5,21 @@ const fs = require("fs");
 
 const app = express();
 
+const BASE_SPEECH_API_URL =
+  "https://www.naturalreaders.com/api/v4/tts/lgcspeak?apikey=b98x9xlfs54ws4k0wc0o8g4gwc0w8ss&src=pw&s=-1";
+
 app.get("/", (req, res) => {
   let source;
 
   if (req.query.speak) {
     //Default: Male
     let speaker = 1;
-    if(req.query.gender && req.query.gender === 'female'){
-        speaker = 42;
+    if (req.query.gender && req.query.gender === "female") {
+      speaker = 42;
     }
-    let url =
-      "https://www.naturalreaders.com/api/v4/tts/lgcspeak?apikey=b98x9xlfs54ws4k0wc0o8g4gwc0w8ss&src=pw&r="+speaker+"&s=-1&t=";
-    url += req.query.speak;
+
+    let url = BASE_SPEECH_API_URL + "&r=" + speaker + "&t=" + req.query.speak;
+
     const tmpFilename = "tmp.mp3";
     const file = fs.createWriteStream(tmpFilename);
     const request = https
@@ -27,10 +30,14 @@ app.get("/", (req, res) => {
             player
               .play(tmpFilename)
               .then(r => {
-                res.send(r);
+                res.send(
+                  "Saying " + req.query.speak + (req.query.gender
+                    ? " in a " + req.query.gender + " voice"
+                    : "")
+                );
               })
               .catch(e => {
-                res.send(e);
+                res.status(500).send(e);
               });
           });
         });
@@ -38,17 +45,17 @@ app.get("/", (req, res) => {
       .on("error", function(err) {
         // Handle errors
         fs.unlink(tmpFilename); // Delete the if (cb) cb(err.message);
-        console.log('Error downloading the file');
+        console.log("Error downloading the file");
       });
   } else {
     source = req.query.file;
     player
-      .play("sounds/"+source)
+      .play("sounds/" + source)
       .then(r => {
         res.send(r);
       })
       .catch(e => {
-        res.send(e);
+        res.status(400).send(e);
       });
   }
 });
