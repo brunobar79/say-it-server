@@ -3,7 +3,7 @@
 HTTP Server (powered by express) that will play sounds (anonymously) based on incoming HTTP requests
 It could be use as a communication tool for an office, or just to make jokes between coworkers
 
-##USAGE
+## USAGE
 
 ### Text to speech:
 
