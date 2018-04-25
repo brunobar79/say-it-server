@@ -16,7 +16,7 @@ app.get("/list", (req, res) => {
   const files = [];
   fs.readdirSync(folder).forEach(file => {
     if (file.indexOf("mp3") !== -1) {
-      files.push(file);
+      files.push(file.replace(".mp3", ""));
     }
   });
   res.send(files.join("\n"));
