@@ -8,7 +8,6 @@
     "express-fileupload": "^0.4.0",
     "fs": "^0.0.1-security",
     "lame": "^1.2.4",
-    "speaker": "^0.4.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
