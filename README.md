@@ -2,7 +2,7 @@
 
 HTTP Server (powered by express) that will play sounds (anonymously) based on incoming HTTP requests.
 
-It could be use as a communication tool for an office / making announcments (ex. the classic "FOOD IS READY!") or you can get creative and have a LOT of fun with it.
+It could be use as a communication tool for an office / making announcements (ex. the classic "FOOD IS READY!") or you can get creative and have a LOT of fun with it.
 
 
 ## USAGE
@@ -23,7 +23,7 @@ Files should be located in the "sound" folder
 http://localhost:3000/?file=gotem
 
 
-Should be used with say-it-cli for a better experience
+You can use it together with [say-it-cli](https://github.com/brunobar79/say-it-cli) for a better experience
 
 ## TO INSTALL
 
