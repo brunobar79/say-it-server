@@ -2,7 +2,7 @@
 
 HTTP Server (powered by express) that will play sounds (anonymously) based on incoming HTTP requests.
 
-It could be use as a communication tool for an office, making announcments (for example, the classic "FOOD IS READY!") or you can get creative and have a LOT of fun with it.
+It could be use as a communication tool for an office / making announcments (ex. the classic "FOOD IS READY!") or you can get creative and have a LOT of fun with it.
 
 
 ## USAGE
